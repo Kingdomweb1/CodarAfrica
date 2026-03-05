@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>In Loving Memory</title>
+
+  <!-- Still HTML+CSS only. -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f3f1ec;
+      --paper:#ffffff;
+      --ink:#171717;
+      --muted:#5c5c5c;
+      --line:rgba(0,0,0,.10);
+      --shadow: 0 16px 45px rgba(0,0,0,.10);
+      --radius:18px;
+      --max:980px;
+      --accent:#1f2937;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(800px 500px at 20% 0%, rgba(0,0,0,.06), transparent 60%),
+        radial-gradient(700px 500px at 80% 10%, rgba(0,0,0,.04), transparent 60%),
+        var(--bg);
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.7;
+    }
+
+    /* Layout */
+    .container{max-width:var(--max); margin:0 auto; padding:22px}
+
+    /* Header / Nav */
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background:rgba(243,241,236,.70);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:12px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      letter-spacing:.3px;
+    }
+    .mark{
+      width:34px; height:34px;
+      border-radius:12px;
+      background:linear-gradient(135deg, rgba(0,0,0,.82), rgba(0,0,0,.55));
+      box-shadow: 0 10px 25px rgba(0,0,0,.10);
+    }
+    nav a{
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:600;
+      font-size:13px;
+      letter-spacing:.9px;
+      padding:10px 12px;
+      border-radius:12px;
+      transition:.15s ease;
+      text-transform:uppercase;
+    }
+    nav a:hover{
+      color:var(--ink);
+      background:rgba(255,255,255,.55);
+      border:1px solid var(--line);
+    }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:14px;
+      font-weight:700;
+      text-decoration:none;
+      border:1px solid var(--line);
+      transition:.15s ease;
+      user-select:none;
+      cursor:pointer;
+    }
+    .btn-primary{
+      background:var(--accent);
+      color:#fff;
+      border-color:transparent;
+      box-shadow: 0 14px 30px rgba(0,0,0,.12);
+    }
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-ghost{
+      background:rgba(255,255,255,.55);
+      color:var(--ink);
+    }
+    .btn-ghost:hover{background:#fff}
+
+    /* Hero */
+    .hero{
+      padding:28px 0 10px;
+    }
+    .hero-card{
+      background:rgba(255,255,255,.70);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-inner{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:18px;
+      padding:22px;
+    }
+    .title{
+      font-family:"Playfair Display", serif;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height:1.05;
+      margin:0;
+      letter-spacing:.2px;
+    }
+    .subtitle{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:16px;
+      max-width:65ch;
+    }
+
+    .profile{
+      display:grid;
+      grid-template-columns: 110px 1fr;
+      gap:14px;
+      align-items:center;
+      padding:16px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.60);
+    }
+    .profile img{
+      width:110px; height:110px;
+      object-fit:cover;
+      border-radius:16px;
+      border:1px solid var(--line);
+      filter:saturate(.95) contrast(1.03);
+    }
+    .quote{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .dates{
+      display:inline-flex;
+      margin-top:8px;
+      font-weight:700;
+      letter-spacing:.8px;
+      font-size:13px;
+      color:var(--ink);
+      background:rgba(0,0,0,.06);
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    /* Sections */
+    .section{
+      margin-top:16px;
+      background:rgba(255,255,255,.70);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+      padding:20px;
+    }
+    .section h2{
+      font-family:"Playfair Display", serif;
+      font-size:18px;
+      margin:0 0 8px;
+      letter-spacing:.4px;
+    }
+    .section p{
+      margin:0;
+      color:#2f2f2f;
+      font-size:15px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    .block{
+      padding:16px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.55);
+    }
+
+    footer{
+      text-align:center;
+      padding:34px 0;
+      font-size:13px;
+      color:rgba(0,0,0,.55);
+    }
+
+    /* Responsive */
+    @media(min-width:900px){
+      .hero-inner{
+        grid-template-columns: 1.2fr .8fr;
+        gap:18px;
+        padding:28px;
+      }
+      .grid{
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .profile{
+        grid-template-columns: 140px 1fr;
+      }
+      .profile img{
+        width:140px; height:140px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <div class="mark" aria-hidden="true"></div>
+          <div>In Loving Memory</div>
+        </div>
+
+        <nav>
+          <a href="#home">Home</a>
+          <a href="#story">Story</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-card">
+        <div class="hero-inner">
+          <div>
+            <h1 class="title">Elara Vance</h1>
+            <p class="subtitle">
+              A life well lived, a memory forever cherished.
+              Your light continues to guide us — in love, in lessons, and in quiet strength.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#story">Read Her Story</a>
+              <a class="btn btn-ghost" href="index.html">← Back to Home</a>
+              <a class="btn btn-ghost" href="#contact">Send a Message</a>
+            </div>
+
+            <div class="dates">1942 — 2023</div>
+          </div>
+
+          <div class="profile">
+            <!-- Replace with your own image -->
+            <img src="https://thumbs.dreamstime.com/b/portrait-african-girl-blue-top-jungle-portrait-young-beautiful-african-girl-blue-top-standing-green-jungle-157218538.jpg" alt="Portrait" />
+            <div>
+              <p class="quote">
+                “What we love never truly leaves us. It lives in the way we remember,
+                in the values we carry, and in the kindness we pass forward.”
+              </p>
+              <p class="quote" style="margin-top:10px">
+                Scroll down for a short story, gallery section, and contact.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="section" id="story">
+      <h2>Her Story</h2>
+      <div class="grid">
+        <div class="block">
+          <h2>Early Life</h2>
+          <p>
+            Elara was the first child born into a loving home. She grew up surrounded by
+            warmth, laughter, and strong family values — shaping her gentle spirit and resilience.
+          </p>
+        </div>
+
+        <div class="block">
+          <h2>Career & Passions</h2>
+          <p>
+            She dedicated her life to service, creativity, and meaningful relationships,
+            inspiring many through compassion, wisdom, and steady strength.
+          </p>
+        </div>
+
+        <div class="block">
+          <h2>A Legacy of Love</h2>
+          <p>
+            Her legacy lives on in family and friends — memories filled with kindness, courage,
+            and grace that continue to echo through generations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY (simple placeholder section) -->
+    <section class="section" id="gallery">
+      <h2>Gallery</h2>
+      <p>
+        Add photos here when you’re ready. You can duplicate the “block” cards below and replace the images.
+      </p>
+
+      <div class="grid" style="margin-top:14px">
+        <div class="block">
+          <p style="margin:0;color:var(--muted);font-size:14px">Photo placeholder</p>
+        </div>
+        <div class="block">
+          <p style="margin:0;color:var(--muted);font-size:14px">Photo placeholder</p>
+        </div>
+        <div class="block">
+          <p style="margin:0;color:var(--muted);font-size:14px">Photo placeholder</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <p>
+        Email: <a href="mailto:hello@example.com">hello@example.com</a>
+        <span style="color:var(--muted)"> (replace with your real email)</span>
+      </p>
+
+      <div class="hero-actions" style="margin-top:14px">
+        <a class="btn btn-primary" href="index.html">Go to Main Landing</a>
+        <a class="btn btn-ghost" href="page1.html">Next Page</a>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 In Loving Memory — All rights reserved.
+    </footer>
+  </main>
+</body>
+</html>
