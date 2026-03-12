@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- This makes the website responsive on mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Flexbox Card Layout</title>
+
+    <style>
+        /* ================= HEADER FLEXBOX ================= */
+
+header{
+    display:flex;
+
+    /* Push logo left and menu right */
+    justify-content:space-between;
+
+    /* Align items vertically */
+    align-items:center;
+
+    padding:15px 20px;
+
+    background:#111;
+    color:white;
+
+    border-radius:10px;
+    margin-bottom:30px;
+}
+
+/* Navigation container */
+.navbar{
+    display:flex;
+
+    /* Space between menu links */
+    gap:20px;
+}
+
+/* Navigation links */
+.navbar a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* Hover effect */
+.navbar a:hover{
+    color:orange;
+}
+
+
+
+
+
+        /* Reset default browser spacing */
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        /* Body styling */
+        body{
+            font-family: Arial, sans-serif;
+            padding:20px;
+            background:#f4f4f4;
+        }
+
+        /* Page Title */
+        h1{
+            text-align:center;
+            margin-bottom:30px;
+        }
+
+        /* ================= FLEXBOX CONTAINER ================= */
+
+        /* This section holds all the cards */
+        .card-container{
+
+            /* Activates Flexbox */
+            display:flex;
+
+            /* Allows cards move to next row on small screen */
+            flex-wrap:wrap;
+
+            /* Adds space between cards */
+            gap:20px;
+
+            /* Align cards to center horizontally */
+            justify-content:center;
+
+            margin-bottom:40px;
+        }
+
+        /* ================= CARD DESIGN ================= */
+
+        .card{
+            width:250px;
+            background:white;
+            border-radius:10px;
+            padding:20px;
+            border:1px solid #ddd;
+
+            /* Adds small shadow for beauty */
+            box-shadow:0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .card h2{
+            margin-bottom:10px;
+        }
+
+        /* ================= FOOTER FLEXBOX ================= */
+
+        footer{
+            display:flex;
+
+            /* Push footer sections apart */
+            justify-content:space-between;
+
+            /* Allow footer wrap on small screens */
+            flex-wrap:wrap;
+
+            gap:20px;
+
+            background:#222;
+            color:white;
+            padding:20px;
+            border-radius:10px;
+        }
+
+        footer a{
+            color:lightblue;
+            text-decoration:none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER & NAVBAR ================= -->
+
+<header>
+
+    <!-- Website Logo / Title -->
+    <div class="logo">
+        <h2>MyFlexSite</h2>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+
+</header>
+
+    <!-- Website Title -->
+    <h1>My Flexbox Assignment</h1>
+
+    <!-- ================= CARD SECTION ================= -->
+
+    <!-- This section is the Flex Parent -->
+    <section class="card-container">
+
+        <!-- Each card is a Flex Child -->
+        <div class="card">
+            <h2>Leadership</h2>
+            <p>Leadership is influence and responsibility.</p>
+        </div>
+
+        <div class="card">
+            <h2>Web Design</h2>
+            <p>Web design combines structure and creativity.</p>
+        </div>
+
+        <div class="card">
+            <h2>Flexbox</h2>
+            <p>Flexbox helps arrange items in rows and columns.</p>
+        </div>
+
+        <div class="card">
+            <h2>Growth</h2>
+            <p>Continuous learning improves skill and mindset.</p>
+        </div>
+
+        <div class="card">
+            <h2>Innovation</h2>
+            <p>Innovation solves real life problems.</p>
+        </div>
+
+        <div class="card">
+            <h2>Technology</h2>
+            <p>Technology makes work easier and faster.</p>
+        </div>
+
+    </section>
+<a class="btn btn-ghost" href="page2.html">Page 3</a>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    
+    
+    <!-- Footer is also a Flex Container -->
+    <footer>
+
+        <!-- Footer Section 1 -->
+        <div>
+            <h3>About</h3>
+            <p>This project explains how Flexbox works.</p>
+        </div>
+
+        <!-- Footer Section 2 -->
+        <div>
+            <h3>Contact</h3>
+            <p>Email: example@mail.com</p>
+        </div>
+
+        <!-- Footer Section 3 -->
+        <div>
+            <h3>Social</h3>
+            <a href="#">Facebook</a><br>
+            <a href="#">Instagram</a>
+        </div>
+
+    </footer>
+
+</body>
+</html>
